@@ -1,0 +1,262 @@
+\documentclass{beamer}
+%\usepackage{beamerthemeshadow}
+%\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamersize{text margin left=5mm}
+\setbeamersize{text margin right=5mm}
+
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{grffile}
+\usepackage{tabularx}
+
+\usepackage{epstopdf}
+
+\usepackage{listings}
+\lstset{
+     language     = C++,
+     basicstyle   = \ttfamily,
+     keywordstyle = \ttfamily\color[rgb]{0.0, 0.0, 1.0},
+     stringstyle  = \ttfamily\color[rgb]{1.0, 0.0, 0.0},
+     commentstyle = \ttfamily\color[rgb]{0.0, 0.6, 0.0},
+     backgroundcolor = \color[rgb]{0.9, 0.9, 0.9},
+     frame        = single,
+     numbers      = left,
+}
+
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+\definecolor{titlecolorr}{rgb}{0.75,0.8,0.9}
+\definecolor{blockcolorr}{rgb}{0.3,0.35,0.55}
+\setbeamercolor*{frametitle}{bg=titlecolorr,fg=black}
+\setbeamercolor{author in head/foot}{bg=titlecolorr,fg=black}
+\setbeamercolor{title in head/foot}{bg=titlecolorr,fg=black}
+\setbeamercolor{title}{bg=blockcolorr,fg=white}
+\setbeamercolor{block title}{bg=blockcolorr,fg=white}
+\setbeamercolor{date in head/foot}{bg=titlecolorr,fg=black}
+%\setbeamerfont{slide title}{size=\LARGE,series=\bfseries}
+
+\begin{document}
+
+% \renewcommand{\inserttotalframenumber}{2}
+
+\newcommand{\newImage}[2]{
+  \begin{minipage}{#1\textwidth}
+  \renewcommand{\_}{_}
+  \IfFileExists{#2}
+  {\includegraphics[width=1\textwidth]{#2}}
+  {\centering N/A}
+  \renewcommand{\_}{\textunderscore}
+    \end{minipage}
+}
+
+\title{Histogram handling in CxAODReader}
+\author[Daniel B\"uscher]{
+%Hannah Arnold, \underline{
+Daniel B\"uscher%}, Christian Weiser
+}
+\institute{Universit\"at Freiburg}\date{\today} 
+
+\frame{\titlepage}
+
+%\footnotesize
+\scriptsize
+
+\begin{frame}[fragile,t]
+\frametitle{Introduction}
+% \structure{Inputs}
+\begin{itemize}
+ \item Discussing histogram handling in CxAODReader using the example of the VHreso code
+ \item Naming convention: ``channel\_tags\_description/variation/sample\_distribution''
+ \item Showing example code from SVN (links below), but simplified in many places
+ \item[$\Rightarrow$] The SVN code has more checks and optimizations, which should be kept
+\end{itemize}
+\begin{center}
+\newImage{0.8}{browser1.png}
+\end{center}
+{\tiny
+\begin{verbatim}
+https://svnweb.cern.ch/trac/
+atlasoff/browser/PhysicsAnalysis/HiggsPhys/Run2/Hbb/CxAODFramework/CxAODReader/
+https://svnweb.cern.ch/trac/
+atlasphys-exa/browser/Physics/Exotic/Analysis/DibosonResonance/Data2015/Code/CxAODFramework_DB/CxAODReader_DB/
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile,t]
+\frametitle{HistSvc and HistNameSvc initialization}
+% \structure{Inputs}
+\begin{itemize}
+ \item HistSvc: generic histogram handling
+ \item HistNameSvc: analysis specific histogram naming
+ \item[$\Rightarrow$] The VHreso code uses a custom HistNameSvc\_VHreso
+ \item Both are initialized in AnalysisReader\_DB::histInitialize()
+ \item The HistSvc object gets a pointer to the HistNameSvc object
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+EL::StatusCode AnalysisReader_DB :: histInitialize () {
+  // ... do some stuff ...
+  m_histSvc = new HistSvc();
+  if (m_analysisType == VH1LepHist) {
+    m_histNameSvc = new HistNameSvc_VHreso();
+  } else {
+    m_histNameSvc = new HistNameSvc();
+  }
+  m_histSvc -> SetNameSvc(m_histNameSvc);
+}
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile,t]
+\frametitle{Histogram booking and filling}
+% \structure{Inputs}
+\begin{itemize}
+ \item HistSvc provides 1-line booking and filling of histograms (lines 11-12)
+ \item Only the distibution name is provided when filling
+ \item The full histogram name is determined by HistNameSvc (info given beforehand)
+ \item[$\Rightarrow$] E.g. number of tags (nTag, nAddTag) are set before filling (lines 8-9)
+ \item Note that such information can be provided to HistNameSvc anywhere in the reader
+ \item[$\Rightarrow$] E.g. in a separate b-tagging method
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+EL::StatusCode AnalysisReader_DB :: fill_VH1LepHist() {
+  // ... get containers from selection result ...
+  int nTag = 0;
+  for(const xAOD::Jet* trackJet : matchedJets){
+    if (Props::MV2c20.get(trackJet) > bTagCut) nTag++;
+  }
+  // ... calculate nAddTag ...
+  ((HistNameSvc_VHreso*) m_histNameSvc) -> set_nTag(nTag);
+  ((HistNameSvc_VHreso*) m_histNameSvc) -> set_nAddTag(nAddTag);
+  // ... calculate four vectors ...
+  m_histSvc -> BookFillHist("vh_m", 200, 0, 4000, VHVec.M()/1e3, m_weight);
+  m_histSvc -> BookFillHist("h_pt", 200, 0, 4000, HVec.Pt()/1e3, m_weight);
+}
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile,t]
+\frametitle{Inner workings of HistSvc}
+% \structure{Inputs}
+\begin{itemize}
+ \item BookFillHist is basically one line: call BookHist and fill the returned histogram
+ \item BookHist retrieves the full histogram name from HistNameSvc (line 7)
+ \item Then it tries to find the requested histogram in a map and return it
+ \item If the histogram is not found (the first time it is requested) a new one is created
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+void HistSvc::BookFillHist(const string& name, /* ... */) {
+  BookHist(name, nbinsx, xlow, xup) -> Fill(value, weight);
+  // ... additionally fill weight systs ...
+}
+
+TH1* HistSvc::BookHist(const string& name, /* ... */) {
+  string fullname = m_nameSvc -> getFullHistName(name);
+  TH1* hist = FindHistInMap(fullname);
+  if(!hist) {
+    hist = new TH1F(fullname, fullname, nbinsx, xlow, xup);
+    m_hists[fullname] = hist;
+  }
+  return hist;
+}
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile,t]
+\frametitle{Implementation of custom HistNameSvc}
+% \structure{Inputs}
+\begin{itemize}
+ \item The implemention of HistNameSvc\_VHreso determines the full histogram name
+ \item[$\Rightarrow$] Slashes are interpreted by EventLoop/SampleHandler to create folder structure
+ \item The name is built in getFullHistName() using given information
+ \item[$\Rightarrow$] E.g. ``\_2tag'' is added if HistNameSvc::set\_nTag(2) was called beforehand (line 6)
+ \item Note that getFullHistName() is called many times $\Rightarrow$ needs efficient implementation
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+std::string HistNameSvc_VHreso::getFullHistName(const std::string& variable) {
+  m_name = "lvJ";
+  if (m_nTag < 0) m_name += "_0ptag";
+  else if (m_nTag == 0) m_name += "_0tag";
+  else if (m_nTag == 1) m_name += "_1tag";
+  else if (m_nTag == 2) m_name += "_2tag";
+  else m_name += "_3ptag";
+  // set nAddTag and description string ...
+  m_name += "/" + m_variation + "/";
+  m_name += m_sample + "_" + variable;
+  return m_name;
+}
+\end{lstlisting}
+}
+\end{minipage}\\
+\newImage{0.35}{browser2.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Summary}
+\structure{Summary}
+\begin{itemize}
+ \item HistSvc provides a convenient way for histogram booking and filling (1-liner)
+ \item HistNameSvc separates the histogram naming from the reader, can easily be costumized
+\end{itemize}
+\structure{Not discussed}
+\begin{itemize}
+ \item Efficient filling of weight systematics with HistSvc, some info at:
+{\tiny
+\begin{verbatim}
+https://its.cern.ch/jira/browse/CXAOD-24
+\end{verbatim}
+}
+ \item Filling the same distribution multiple times in one event (e.g. for different regions)
+ \item[$\Rightarrow$] Can mostly be avoided by a good definition of orthogonal regions
+ \item[$\Rightarrow$] If needed on can do a simple loop over BookFillHist, example at:
+{\tiny
+\begin{verbatim}
+https://svnweb.cern.ch/trac/atlasphys-exa/browser/Physics/Exotic/Analysis/DibosonResonance/Data2015
+/Code/CxAODFramework_DB/CxAODReader_DB/trunk/Root/AnalysisReader_DB.cxx?rev=240346#L927
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+% 
+% \begin{frame}
+% \frametitle{BACKUP}
+% \begin{center}
+%  \huge BACKUP
+% \end{center}
+% \end{frame}
+
+
+\end{document}
+
+

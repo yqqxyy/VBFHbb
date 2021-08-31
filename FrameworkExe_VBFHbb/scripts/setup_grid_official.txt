@@ -1,0 +1,5 @@
+setupATLAS
+localSetupRucioClients
+voms-proxy-init -voms atlas:/atlas/phys-higgs/Role=production
+localSetupPandaClient --noAthenaCheck
+rcSetup

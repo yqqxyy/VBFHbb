@@ -1,0 +1,210 @@
+// dear emacs, this is -*- C++ -*-
+#include "xAODEgamma/Electron.h"
+#include "xAODMuon/Muon.h"
+#include "xAODJet/Jet.h"
+#include "xAODEventInfo/EventInfo.h"
+
+#include "CxAODTools_VBFHbb/CommonProperties_VBFHbb.h"
+//
+#include <utility>
+
+template<typename T>
+VBFHbbEvtSelection<T>::VBFHbbEvtSelection() noexcept :
+EventSelection(),
+  m_result()
+{
+}
+
+
+template<typename T>
+bool VBFHbbEvtSelection<T>::passSelection(SelectionContainers & containers, bool /*isKinVar*/) {
+
+  const xAOD::JetContainer    * jets     = containers.jets;
+  const xAOD::JetContainer    * fatJets     = containers.fatjets;
+  const xAOD::JetContainer    * trackjets = containers.trackjets;
+  const xAOD::EventInfo       * evtinfo  = containers.evtinfo;
+    
+
+  // assume that T has a field bool pass
+  clearResult();
+  if ( evtinfo ) {
+    if(! passTriggerSelection(evtinfo) ) {
+      m_result.pass = false;
+      return false;
+    }
+  }
+  if ( jets ) {
+    if(! passJetPreSelection(jets,NULL)) {
+      m_result.pass = false;
+      return false;
+    }
+    if(! passJetSelection(jets,evtinfo)) {
+      m_result.pass = false;
+      return false;
+    }
+  }
+  
+  
+  if(! passKinematics()) {
+    m_result.pass = false;
+    return false;
+  }
+
+  m_result.pass = true;
+  return true;
+  
+}
+
+template<typename T>
+bool VBFHbbEvtSelection<T>::passPreSelection(SelectionContainers & containers, bool /*isKinVar*/) {
+
+  const xAOD::EventInfo       * evtinfo   = containers.evtinfo;
+  const xAOD::JetContainer    * jets      = containers.jets;
+  const xAOD::JetContainer    * fatjets = containers.fatjets;
+  const xAOD::JetContainer    * trackjets = containers.trackjets;
+  // assume that T has a field bool pass
+  clearResult();
+
+  //todo : implement cut flow
+
+  // event cleaning
+  bool passEventCleaning = true;
+  if ( evtinfo ) {
+    bool isMC = Props::isMC.get(evtinfo);
+    passEventCleaning &= Props::hasPV.get(evtinfo);
+    if (!isMC) {
+      passEventCleaning &= Props::passGRL.get(evtinfo);
+      passEventCleaning &= Props::isCleanEvent.get(evtinfo);
+    }
+
+    if(!passEventCleaning){
+      m_result.pass = false;
+      return false;
+    }
+
+  }
+
+  // jets
+  if ( jets ) {
+    if(! passJetPreSelection(jets,fatjets)) {
+      m_result.pass = false;
+      return false;
+    }
+  }
+
+  // Trigger to be implemented
+  if(! passTriggerPreSelection(evtinfo)) {
+    m_result.pass = false;
+    return false;
+  }
+
+  m_result.pass = true;
+  return true;
+
+}
+
+// Pre-selection versions
+template<typename T>
+bool VBFHbbEvtSelection<T>::passTriggerPreSelection(const xAOD::EventInfo* evtinfo) {
+
+  //bool passesNewVBFTriggers =
+  //  ( Props::passL1_J40_0ETA25_2J25_J20_31ETA49.get(evtinfo) && (   Props::passHLT_j80_bmv2c2070_split_j60_bmv2c2085_split_j45_320eta490.get(evtinfo)
+  //                                                                  || Props::passHLT_j80_0eta240_j60_j45_320eta490.get(evtinfo) ))
+  //  || 
+  //  ( Props::passL1_J40_0ETA25_2J15_31ETA49.get(evtinfo) && (   Props::passHLT_j80_bmv2c2085_split_2j60_320eta490.get(evtinfo)
+  //                                                              || Props::passHLT_j80_0eta240_2j60_320eta490.get(evtinfo) ));
+
+  ////careful with activating this! these triggers only work for mc. data has passHLT_2j45_bmv2c2070_split_2j45_L14J15
+  //bool passesOldTriggers = Props::passL1_4J20.get(evtinfo) && (Props::passHLT_2j55_bmv2c2077_split_2j55.get(evtinfo) || Props::passHLT_2j45_bmv2c2070_split_2j45.get(evtinfo));
+
+  //bool passesOldOtherTriggers = Props::passL1_4J15.get(evtinfo) && (
+  //       Props::passHLT_2j35_bmv2c2070_split_2j35_L14J15.get(evtinfo)
+  //    || Props::passHLT_2j35_bmv2c2060_split_2j35_L14J15.get(evtinfo)
+  //    || Props::passHLT_2j35_bmv2c2050_split_2j35_L14J15.get(evtinfo)
+  //    || Props::passHLT_j75_bmv2c2060_split_3j75_L14J15.get(evtinfo)
+  //    || Props::passHLT_j75_bmv2c2070_split_3j75_L14J15.get(evtinfo));
+
+  //return passesNewVBFTriggers || passesOldTriggers || passesOldOtherTriggers;
+  return true;
+}
+
+  
+
+template<typename T>
+bool VBFHbbEvtSelection<T>::passJetPreSelection(const xAOD::JetContainer* jets,const xAOD::JetContainer* fatjets) {
+  // assume that T has fields vector<Jet*> jets, forwardJets
+  m_result.jets.clear();
+  m_result.fatJets.clear();
+  m_result.forwardJets.clear();
+  // look at signal jets, veto jets
+  // if pass VH jets selection fill T.jets and return true
+  // fill T.jets in decreasing pT order
+  // else return false
+  int njets_45(0);
+  int njets_45_central(0);
+  int njets_55_central(0);
+  int nfwdjets(0);
+  int nbtag85(0);
+  int nbtag70(0);
+  int nbtag60(0);
+  int nbtag60_highpt(0);
+  int nbtag70_highpt(0);
+  int nbtag85_highpt(0);
+  for (unsigned int iJet(0) ; iJet < jets->size(); ++iJet) {
+    const xAOD::Jet * jet = jets->at(iJet);
+    if (!Props::goodJet.get(jet)) continue; //Loop only on good jets
+    if (!Props::passOR.get(jet)) continue; 
+    if (!Props::isVetoJet.get(jet)) continue; 
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_85_weight) nbtag85++;
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_70_weight) nbtag70++;
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_60_weight) nbtag60++;
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_85_weight && jet->pt()>200e3) nbtag85_highpt++;
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_70_weight && jet->pt()>200e3) nbtag70_highpt++;
+    if (fabs(jet->eta()) < 2.5 && Props::MV2c10.get( jet ) > m_b_60_weight && jet->pt()>200e3) nbtag60_highpt++;
+    m_result.jets.push_back(jet);
+    if (jet->pt()>45e3) njets_45++;
+    if (fabs(jet->eta())<2.5) njets_45_central++;
+    if (fabs(jet->eta())<2.5 && jet->pt()>55e3) njets_55_central++;
+    if (fabs(jet->eta()) > 3.2){
+      if (jet->pt()>45e3) nfwdjets++;
+      m_result.forwardJets.push_back(jet);
+    }
+  }
+  // Jets appear to be pt ordered but just in case
+  std::sort(m_result.jets.begin(), m_result.jets.end(), sort_pt);
+
+  int ndoublebtag = 0;
+  if (fatjets) for (unsigned int iJet(0) ; iJet < fatjets->size(); ++iJet) {
+    const xAOD::Jet * jet = fatjets->at(iJet);
+    // require isFatJet flag
+    if (Props::passPreSel.get(jet)){//pT > 200 GeV; |eta| < 2.5
+      m_result.fatJets.push_back(jet);
+      if (Props::xbbDoubleResult.get(jet)) ndoublebtag++;
+    }
+  }
+  // cannot rely on jets being pt sorted since all variations have same order in CxAOD
+  std::sort(m_result.fatJets.begin(), m_result.fatJets.end(), sort_pt);
+
+  //General event selection
+  if (njets_45>=3 && nbtag85>=2 && nbtag70>=1) return true;
+  //Extra single high pt selection for trigger efficiencies
+  if (nbtag60_highpt>=1) return true;
+  //Extra two forward selection for trigger efficiencies
+  if (nfwdjets>=2 && nbtag85>=1) return true;
+  //Convenient not to filter MC
+  //if (m_isMC) return true;
+  //if (m_result.fatJets.size() && (m_isMC || ndoublebtag>=1)) return true;
+  
+  return false;
+}
+
+
+//
+template<typename T>
+bool VBFHbbEvtSelection<T>::passKinematics() {
+  return true;
+}
+
+template<typename T>
+void VBFHbbEvtSelection<T>::clearResult() {
+}

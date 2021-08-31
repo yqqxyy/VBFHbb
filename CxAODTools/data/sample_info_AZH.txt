@@ -1,0 +1,231 @@
+# This file contains a map between the DSID and the name of the histogram to be used by HistNameSvc
+# Format: DSID / Name used in HistNameSvc / Description(not used anywhere) / etag / crossSection / kfactor / genFiltEff				
+# WARNING 1: for samples with multiple e-tags the e-tag that should be used must be specified in the 4th column
+# WARNING 2: if the columns 5-6 are filled the PMG cross-sections will be overwritten with those provided in this file
+346344	                           ttH	                 PhPy8EG_A14NNPDF23_NNPDF30ME_ttH125_semilep	e7148	
+363507                             VVV                         Sherpa_222_NNPDF30NNLO_WWZ_3l1v2j_EW6    e6379 
+363508                             VVV                           Sherpa_222_NNPDF30NNLO_WZZ_4l2j_EW6    e6374
+363509                             VVV                         Sherpa_222_NNPDF30NNLO_WZZ_3l1v2j_EW6    e6374
+364100	                             Z	        Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV0_70_CVetoBVeto	e5271	
+364101	                             Z	      Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV0_70_CFilterBVeto	e5271	
+364102	                             Z	           Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV0_70_BFilter	e5271	
+364103	                             Z	      Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV70_140_CVetoBVeto	e5271	
+364104	                             Z	    Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV70_140_CFilterBVeto	e5271	
+364105	                             Z	         Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV70_140_BFilter	e5271	
+364106	                             Z	     Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV140_280_CVetoBVeto	e5271	
+364107	                             Z	   Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV140_280_CFilterBVeto	e5271	
+364108	                             Z	        Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV140_280_BFilter	e5271	
+364109	                             Z	     Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV280_500_CVetoBVeto	e5271	
+364110	                             Z	   Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV280_500_CFilterBVeto	e5271	
+364111	                             Z	        Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV280_500_BFilter	e5271	
+364112	                             Z	               Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV500_1000	e5271	
+364113	                             Z	             Sherpa_221_NNPDF30NNLO_Zmumu_MAXHTPTV1000_E_CMS	e5271	
+364114	                             Z	          Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV0_70_CVetoBVeto	e5299	
+364115	                             Z	        Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV0_70_CFilterBVeto	e5299	
+364116	                             Z	             Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV0_70_BFilter	e5299	
+364117	                             Z	        Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV70_140_CVetoBVeto	e5299	
+364118	                             Z	      Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV70_140_CFilterBVeto	e5299	
+364119	                             Z	           Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV70_140_BFilter	e5299	
+364120	                             Z	       Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV140_280_CVetoBVeto	e5299	
+364121	                             Z	     Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV140_280_CFilterBVeto	e5299	
+364122	                             Z	          Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV140_280_BFilter	e5299	
+364123	                             Z	       Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV280_500_CVetoBVeto	e5299	
+364124	                             Z	     Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV280_500_CFilterBVeto	e5299	
+364125	                             Z	          Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV280_500_BFilter	e5299	
+364126	                             Z	                 Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV500_1000	e5299	
+364127	                             Z	               Sherpa_221_NNPDF30NNLO_Zee_MAXHTPTV1000_E_CMS	e5299	
+364128	                             Z	      Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_CVetoBVeto	e5307	
+364129	                             Z	    Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_CFilterBVeto	e5307	
+364130	                             Z	         Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV0_70_BFilter	e5307	
+364131	                             Z	    Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_CVetoBVeto	e5307	
+364132	                             Z	  Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_CFilterBVeto	e5307	
+364133	                             Z	       Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV70_140_BFilter	e5307	
+364134	                             Z	   Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_CVetoBVeto	e5307	
+364135	                             Z	 Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_CFilterBVeto	e5307	
+364136	                             Z	      Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV140_280_BFilter	e5307	
+364137	                             Z	   Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV280_500_CVetoBVeto	e5307	
+364138	                             Z	 Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV280_500_CFilterBVeto	e5313	
+364139	                             Z	      Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV280_500_BFilter	e5313	
+364140	                             Z	             Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV500_1000	e5307	
+364141	                             Z	           Sherpa_221_NNPDF30NNLO_Ztautau_MAXHTPTV1000_E_CMS	e5307	
+364142	                             Z	        Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV0_70_CVetoBVeto	e5308	
+364143	                             Z	      Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV0_70_CFilterBVeto	e5308	
+364144	                             Z	           Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV0_70_BFilter	e5308	
+364145	                             Z	      Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV70_140_CVetoBVeto	e5308	
+364146	                             Z	    Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV70_140_CFilterBVeto	e5308	
+364147	                             Z	         Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV70_140_BFilter	e5308	
+364148	                             Z	     Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV140_280_CVetoBVeto	e5308	
+364149	                             Z	   Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV140_280_CFilterBVeto	e5308	
+364150	                             Z	        Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV140_280_BFilter	e5308	
+364151	                             Z	     Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV280_500_CVetoBVeto	e5308	
+364152	                             Z	   Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV280_500_CFilterBVeto	e5308	
+364153	                             Z	        Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV280_500_BFilter	e5308	
+364154	                             Z	               Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV500_1000	e5308	
+364155	                             Z	             Sherpa_221_NNPDF30NNLO_Znunu_MAXHTPTV1000_E_CMS	e5308	
+366010	                             Z	                     Sh_221_NN30NNLO_Znunu_PTV70_100_BFilter	e6695	
+366011	                             Z	           Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ0_500_BFilter	e6695	
+366012	                             Z	        Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ500_1000_BFilter	e6695	
+366013	                             Z	      Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ1000_E_CMS_BFilter	e6695	
+366014	                             Z	           Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ0_500_BFilter	e6695	
+366015	                             Z	        Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ500_1000_BFilter	e6695	
+366016	                             Z	      Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ1000_E_CMS_BFilter	e6695	
+366017	                             Z	                    Sh_221_NN30NNLO_Znunu_PTV280_500_BFilter	e6695	
+366019	                             Z	                Sh_221_NN30NNLO_Znunu_PTV70_100_CFilterBVeto	e7033	
+366020	                             Z	      Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ0_500_CFilterBVeto	e7033	
+366021	                             Z	   Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ500_1000_CFilterBVeto	e7033	
+366022	                             Z	 Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ1000_E_CMS_CFilterBVeto	e7033	
+366023	                             Z	      Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ0_500_CFilterBVeto	e7033	
+366024	                             Z	   Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ500_1000_CFilterBVeto	e7033	
+366025	                             Z	 Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ1000_E_CMS_CFilterBVeto	e7033	
+366026	                             Z	               Sh_221_NN30NNLO_Znunu_PTV280_500_CFilterBVeto	e7033	
+366028	                             Z	                  Sh_221_NN30NNLO_Znunu_PTV70_100_CVetoBVeto	e7033	
+366029	                             Z	        Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ0_500_CVetoBVeto	e7033	
+366030	                             Z	     Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ500_1000_CVetoBVeto	e7033	
+366031	                             Z	   Sh_221_NN30NNLO_Znunu_PTV100_140_MJJ1000_E_CMS_CVetoBVeto	e7033	
+366032	                             Z	        Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ0_500_CVetoBVeto	e7033	
+366033	                             Z	     Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ500_1000_CVetoBVeto	e7033	
+366034	                             Z	   Sh_221_NN30NNLO_Znunu_PTV140_280_MJJ1000_E_CMS_CVetoBVeto	e7033	
+366035	                             Z	                 Sh_221_NN30NNLO_Znunu_PTV280_500_CVetoBVeto	e7033	
+364156	                             W	        Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV0_70_CVetoBVeto	e5340	
+364157	                             W	      Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV0_70_CFilterBVeto	e5340	
+364158	                             W	           Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV0_70_BFilter	e5340	
+364159	                             W	      Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV70_140_CVetoBVeto	e5340	
+364160	                             W	    Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV70_140_CFilterBVeto	e5340
+364161	                             W	         Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV70_140_BFilter	e5340	
+364162	                             W	     Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV140_280_CVetoBVeto	e5340	
+364163	                             W	   Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV140_280_CFilterBVeto	e5340	
+364164	                             W	        Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV140_280_BFilter	e5340	
+364165	                             W	     Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV280_500_CVetoBVeto	e5340	
+364166	                             W	   Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV280_500_CFilterBVeto	e5340	
+364167	                             W	        Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV280_500_BFilter	e5340	
+364168	                             W	               Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV500_1000	e5340	
+364169	                             W	             Sherpa_221_NNPDF30NNLO_Wmunu_MAXHTPTV1000_E_CMS	e5340	
+364170	                             W	         Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV0_70_CVetoBVeto	e5340	
+364171	                             W	       Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV0_70_CFilterBVeto	e5340	
+364172	                             W	            Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV0_70_BFilter	e5340	
+364173	                             W	       Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV70_140_CVetoBVeto	e5340	
+364174	                             W	     Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV70_140_CFilterBVeto	e5340	
+364175	                             W	          Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV70_140_BFilter	e5340	
+364176	                             W	      Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV140_280_CVetoBVeto	e5340	
+364177	                             W	    Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV140_280_CFilterBVeto	e5340	
+364178	                             W	         Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV140_280_BFilter	e5340	
+364179	                             W	      Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV280_500_CVetoBVeto	e5340	
+364180	                             W	    Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV280_500_CFilterBVeto	e5340	
+364181	                             W	         Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV280_500_BFilter	e5340	
+364182	                             W	                Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV500_1000	e5340	
+364183	                             W	              Sherpa_221_NNPDF30NNLO_Wenu_MAXHTPTV1000_E_CMS	e5340	
+364184	                             W	       Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV0_70_CVetoBVeto	e5340	
+364185	                             W	     Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV0_70_CFilterBVeto	e5340	
+364186	                             W	          Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV0_70_BFilter	e5340	
+364187	                             W	     Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV70_140_CVetoBVeto	e5340	
+364188	                             W	   Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV70_140_CFilterBVeto	e5340	
+364189	                             W	        Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV70_140_BFilter	e5340	
+364190	                             W	    Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV140_280_CVetoBVeto	e5340	
+364191	                             W	  Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV140_280_CFilterBVeto	e5340	
+364192	                             W	       Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV140_280_BFilter	e5340	
+364193	                             W	    Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV280_500_CVetoBVeto	e5340	
+364194	                             W	  Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV280_500_CFilterBVeto	e5340	
+364195	                             W	       Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV280_500_BFilter	e5340	
+364196	                             W	              Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV500_1000	e5340	
+364197	                             W	            Sherpa_221_NNPDF30NNLO_Wtaunu_MAXHTPTV1000_E_CMS	e5340	
+410470	                         ttbar	                     PhPy8EG_A14_ttbar_hdamp258p75_nonallhad	e6337	
+410644	                         stops	        PowhegPythiaEvtGen_P2012_SingleTopSchan_noAllHad_top	e6527	
+410645	                         stops	        PowhegPythia8EvtGen_A14_singletop_schan_lept_antitop	e6527	
+410646	                        stopWt	                 PowhegPythia8EvtGen_A14_Wt_DR_inclusive_top	e6552	
+410647	                        stopWt	             PowhegPythia8EvtGen_A14_Wt_DR_inclusive_antitop	e6552	
+410658	                         stopt	                             PhPy8EG_A14_tchan_BW50_lept_top	e6671	
+410659	                         stopt	                         PhPy8EG_A14_tchan_BW50_lept_antitop	e6671
+410080	                          tttt	                     MadGraphPythia8EvtGen_A14NNPDF23_4topSM	e4111
+410081	                       ttbarWW	                    MadGraphPythia8EvtGen_A14NNPDF23_ttbarWW	e4111	
+410155	                           ttV	                 aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttW	e5070	
+410218	                           ttV	                aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttee	e5070	
+410219	                           ttV	              aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttmumu	e5070	
+410220	                           ttV	            aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_tttautau	e5070	
+363355	                            ZZ	                                   Sh_221_NNPDF30NNLO_ZqqZvv	e5525	
+363356	                            ZZ	                                   Sh_221_NNPDF30NNLO_ZqqZll	e5525	
+363357	                            WZ	                                   Sh_221_NNPDF30NNLO_WqqZvv	e5525	
+363358	                            WZ	                                   Sh_221_NNPDF30NNLO_WqqZll	e5525	
+363359	                            WW	                                 Sh_221_NNPDF30NNLO_WpqqWmlv	e5583	
+363360	                            WW	                                 Sh_221_NNPDF30NNLO_WplvWmqq	e5983	
+363489	                            WZ	                                   Sh_221_NNPDF30NNLO_WlvZqq	e5525	
+364250	                          llll	                                 Sherpa_222_NNPDF30NNLO_llll	e5894	
+364253	                          lllv	                                 Sherpa_222_NNPDF30NNLO_lllv	e5916	
+364254	                          llvv	                                 Sherpa_222_NNPDF30NNLO_llvv	e5916	
+364302	                          ggZZ	                                 Sh_222_NNPDF30NNLO_ggZllZqq	e6273	
+364303	                          ggZZ	                                 Sh_222_NNPDF30NNLO_ggZvvZqq	e6273	
+364304	                          ggWW	                               Sh_222_NNPDF30NNLO_ggWmlvWpqq	e6273	
+364305	                          ggWW	                               Sh_222_NNPDF30NNLO_ggWplvWmqq	e6273	
+364222	                             Z	                    Sherpa_221_NNPDF30NNLO_Znunu_PTV500_1000	e5626	
+364223	                             Z	                  Sherpa_221_NNPDF30NNLO_Znunu_PTV1000_E_CMS	e5626	
+410408	                           tWZ	                      aMcAtNloPythia8EvtGen_tWZ_Ztoll_minDR1	e6423	
+345043	                            ZZ	                               Sherpa_221_NNPDF30NNLO_ZbbZvv	e6470     	
+345044	                            ZZ	                               Sherpa_221_NNPDF30NNLO_ZbbZll	e6470     	
+345045	                            WZ	                               Sherpa_221_NNPDF30NNLO_WlvZbb	e6470      
+345053                            VHbb        PowhegPythia8EvtGen_NNPDF3_AZNLO_WmH125J_MINLO_lvbb_Vp    e5706
+345054                            VHbb        PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_lvbb_Vp    e5706
+345055                            VHbb         PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llbb_Vp    e5706
+345056                            VHbb         PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_vvbb_Vp    e5706
+345057                            VHbb                  PowhegPythia8EvtGen_NNPDF3_AZNLO_ggZH125_llb    e5706
+345058                            VHbb                  PowhegPythia8EvtGen_NNPDF3_AZNLO_ggZH125_vvb    e6004
+345935	                         ttbar	           PhPy8EG_A14_ttbarMET100_200_hdamp258p75_nonallhad    e6620
+410157                             ttV                  aMcAtNloPythia8EvtGen_MEN30NLO_A14N23LO_ttZq    e5070
+412063                             tZq                    aMcAtNloPythia8EvtGen_tllq_NNPDF30_nf4_A14    e7054
+407345	                         ttbar	           PhPy8EG_A14_ttbarMET200_300_hdamp258p75_nonallhad    e6414
+407346                           ttbar             PhPy8EG_A14_ttbarMET300_400_hdamp258p75_nonallhad    e6414
+407347                           ttbar                 PhPy8EG_A14_ttbarMET400_hdamp258p75_nonallhad    e6414
+410472                           ttbar                             PhPy8EG_A14_ttbar_hdamp258p75_dil    e6348
+410648                          stopWt                    PowhegPythia8EvtGen_A14_Wt_DR_dilepton_top    e6615
+410649                          stopWt	              PowhegPythia8EvtGen_A14_Wt_DR_dilepton_antitop    e6615
+410082                         ttgamma           MadGraphPythia8EvtGen_A14NNPDF23LO_ttgamma_noallhad    e4404      	
+506683	          AZH_lltt_mA500_mH400	                           MGPy8EG_2HDM_AZH_lltt_mA500_mH400	e8319	1.0	1.0            
+506684	          AZH_lltt_mA600_mH400	                           MGPy8EG_2HDM_AZH_lltt_mA600_mH400	e8319	1.0	1.0            
+506685	          AZH_lltt_mA600_mH500	                           MGPy8EG_2HDM_AZH_lltt_mA600_mH500	e8319	1.0	1.0            
+506686	          AZH_lltt_mA700_mH400	                           MGPy8EG_2HDM_AZH_lltt_mA700_mH400	e8319	1.0	1.0            
+506687	          AZH_lltt_mA700_mH500	                           MGPy8EG_2HDM_AZH_lltt_mA700_mH500	e8319	1.0	1.0            
+506688	          AZH_lltt_mA800_mH400	                           MGPy8EG_2HDM_AZH_lltt_mA800_mH400	e8319	1.0	1.0            
+506689	          AZH_lltt_mA800_mH600	                           MGPy8EG_2HDM_AZH_lltt_mA800_mH600	e8319	1.0	1.0            
+506690	          AZH_lltt_mA900_mH400	                           MGPy8EG_2HDM_AZH_lltt_mA900_mH400	e8319	1.0	1.0            
+506691	          AZH_lltt_mA900_mH600	                           MGPy8EG_2HDM_AZH_lltt_mA900_mH600	e8319	1.0	1.0            
+506692	         AZH_lltt_mA1000_mH400	                          MGPy8EG_2HDM_AZH_lltt_mA1000_mH400	e8319	1.0	1.0            
+506693	         AZH_lltt_mA1000_mH600	                          MGPy8EG_2HDM_AZH_lltt_mA1000_mH600	e8319	1.0	1.0           
+506694	         AZH_lltt_mA1100_mH400	                          MGPy8EG_2HDM_AZH_lltt_mA1100_mH400	e8319	1.0	1.0            
+506695	         AZH_lltt_mA1100_mH600	                          MGPy8EG_2HDM_AZH_lltt_mA1100_mH600	e8319	1.0	1.0            
+506696	         AZH_lltt_mA1200_mH400	                          MGPy8EG_2HDM_AZH_lltt_mA1200_mH400	e8319	1.0	1.0            
+506697	         AZH_lltt_mA1200_mH500	                          MGPy8EG_2HDM_AZH_lltt_mA1200_mH500	e8319	1.0	1.0            
+506698	         AZH_lltt_mA1200_mH600	                          MGPy8EG_2HDM_AZH_lltt_mA1200_mH600	e8319	1.0	1.0            
+506699	      AZH_vvbb_ggF_mA500_mH200	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA500_mH200	e8319	1.0	1.0            
+506700	      AZH_vvbb_ggF_mA500_mH300	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA500_mH300	e8319	1.0	1.0            
+506701	      AZH_vvbb_ggF_mA600_mH200	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA600_mH200	e8319	1.0	1.0            
+506702	      AZH_vvbb_ggF_mA600_mH400	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA600_mH400	e8319	1.0	1.0            
+506703	      AZH_vvbb_ggF_mA700_mH200	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA700_mH200	e8319	1.0	1.0            
+506704	      AZH_vvbb_ggF_mA700_mH300	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA700_mH300	e8319	1.0	1.0            
+506705	      AZH_vvbb_ggF_mA700_mH500	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA700_mH500	e8319	1.0	1.0            
+506706	      AZH_vvbb_ggF_mA800_mH200	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA800_mH200	e8319	1.0	1.0            
+506707	      AZH_vvbb_ggF_mA800_mH400	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA800_mH400	e8319	1.0	1.0            
+506708	      AZH_vvbb_ggF_mA800_mH600	                       MGPy8EG_2HDM_AZH_vvbb_ggF_mA800_mH600	e8319	1.0	1.0            
+506709	     AZH_vvbb_ggF_mA1000_mH200	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1000_mH200	e8319	1.0	1.0            
+506710	     AZH_vvbb_ggF_mA1000_mH300	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1000_mH300	e8319	1.0	1.0            
+506711	     AZH_vvbb_ggF_mA1000_mH500	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1000_mH500	e8319	1.0	1.0            
+506712	     AZH_vvbb_ggF_mA1000_mH700	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1000_mH700	e8319	1.0	1.0            
+506713	     AZH_vvbb_ggF_mA1200_mH200	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1200_mH200	e8319	1.0	1.0            
+506714	     AZH_vvbb_ggF_mA1200_mH400	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1200_mH400	e8319	1.0	1.0            
+506715	     AZH_vvbb_ggF_mA1200_mH600	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1200_mH600	e8319	1.0	1.0            
+506716	     AZH_vvbb_ggF_mA1200_mH800	                      MGPy8EG_2HDM_AZH_vvbb_ggF_mA1200_mH800	e8319	1.0	1.0            
+506717	      AZH_vvbb_bbA_mA500_mH200	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA500_mH200	e8319	1.0	1.0            
+506718	      AZH_vvbb_bbA_mA500_mH300	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA500_mH300	e8319	1.0	1.0            
+506719	      AZH_vvbb_bbA_mA600_mH200	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA600_mH200	e8319	1.0	1.0            
+506720	      AZH_vvbb_bbA_mA600_mH400	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA600_mH400	e8319	1.0	1.0            
+506721	      AZH_vvbb_bbA_mA700_mH200	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA700_mH200	e8319	1.0	1.0	     	
+506722	      AZH_vvbb_bbA_mA700_mH300	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA700_mH300	e8319	1.0	1.0	     	
+506723	      AZH_vvbb_bbA_mA700_mH500	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA700_mH500	e8319	1.0	1.0	     	
+506724	      AZH_vvbb_bbA_mA800_mH200	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA800_mH200	e8319	1.0	1.0	     	
+506725	      AZH_vvbb_bbA_mA800_mH400	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA800_mH400	e8319	1.0	1.0	     	
+506726	      AZH_vvbb_bbA_mA800_mH600	                       MGPy8EG_2HDM_AZH_vvbb_bbA_mA800_mH600	e8319	1.0	1.0	     	
+506727	     AZH_vvbb_bbA_mA1000_mH200	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1000_mH200	e8319	1.0	1.0	     	
+506728	     AZH_vvbb_bbA_mA1000_mH300	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1000_mH300	e8319	1.0	1.0	     	
+506729	     AZH_vvbb_bbA_mA1000_mH500	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1000_mH500	e8319	1.0	1.0	     	
+506730	     AZH_vvbb_bbA_mA1000_mH700	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1000_mH700	e8319	1.0	1.0	     	
+506731	     AZH_vvbb_bbA_mA1200_mH200	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1200_mH200	e8319	1.0	1.0	     	
+506732	     AZH_vvbb_bbA_mA1200_mH400	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1200_mH400	e8319	1.0	1.0	     	
+506733	     AZH_vvbb_bbA_mA1200_mH600	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1200_mH600	e8319	1.0	1.0	     	
+506734	     AZH_vvbb_bbA_mA1200_mH800	                      MGPy8EG_2HDM_AZH_vvbb_bbA_mA1200_mH800	e8319	1.0	1.0	     	

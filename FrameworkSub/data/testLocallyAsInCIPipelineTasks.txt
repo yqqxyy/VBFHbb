@@ -1,0 +1,35 @@
+0L_mc16a_ZHvvbb     0lep   200    run         mc16_13TeV.345056.PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_vvbb_VpT.deriv.DAOD_HIGG5D1.e5706_e5984_s3126_r9364_r9315_p3374
+0L_mc16d_ZHvvbb     0lep   200    run         mc16_13TeV.345056.PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_vvbb_VpT.deriv.DAOD_HIGG5D1.e5706_e5984_s3126_r10201_r10210_p3374
+0L_mc16a_ttbar      0lep   200    run         mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_HIGG5D1.e6337_e5984_s3126_r9364_r9315_p3371
+0L_mc16d_ttbar      0lep   200    run         mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_HIGG5D1.e6337_e5984_s3126_r10201_r10210_p3371
+0L_mc16a_HVT        0lep   200    run         mc16_13TeV.302418.MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzZH_vvqq_m0700.deriv.DAOD_HIGG5D1.e4069_e5984_s3126_r9364_r9315_p3374
+#0L_mc16a_bbAZh     0lep   200    run         mc16_13TeV.343536.aMcAtNloPythia8EvtGen_A14NNPDF23LO_bbA300_yb2_Zhvvbb.deriv.DAOD_HIGG5D1.e4741_e5984_s3126_r9364_r9315_p3374
+#0L_mc16a_ggAZh     0lep   200    run         mc16_13TeV.341741.MadGraphPythia8EvtGen_A14NNPDF23LO_ggA1000_Zh125_vvbb.deriv.DAOD_HIGG5D1.e4137_e5984_s3126_r9364_r9315_p3374
+0L_data15           0lep   2000   run         data15_13TeV.00279984.physics_Main.deriv.DAOD_HIGG5D1.r9264_p3083_p3372
+0L_data16           0lep   2000   run         data16_13TeV.00297730.physics_Main.deriv.DAOD_HIGG5D1.r9264_p3083_p3372
+0L_data17           0lep   2000   run         data17_13TeV.00325713.physics_Main.deriv.DAOD_HIGG5D1.f839_m1824_p3372
+
+1L_mc16a_WpHlvbb    1lep   200    run         mc16_13TeV.345054.PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_lvbb_VpT.deriv.DAOD_HIGG5D2.e5706_e5984_s3126_r9364_r9315_p3374
+1L_mc16d_WpHlvbb    1lep   200    run         mc16_13TeV.345054.PowhegPythia8EvtGen_NNPDF3_AZNLO_WpH125J_MINLO_lvbb_VpT.deriv.DAOD_HIGG5D2.e5706_e5984_s3126_r10201_r10210_p3374
+1L_mc16a_ttbar      1lep   200    run         mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_HIGG5D2.e6337_e5984_s3126_r9364_r9315_p3371
+1L_mc16d_ttbar      1lep   200    run         mc16_13TeV.410470.PhPy8EG_A14_ttbar_hdamp258p75_nonallhad.deriv.DAOD_HIGG5D2.e6337_e5984_s3126_r10201_r10210_p3371
+1L_mc16a_HVT        1lep   200    run         mc16_13TeV.302346.MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VcWH_lvqq_m1000.deriv.DAOD_HIGG5D2.e4069_e5984_s3126_r9364_r9315_p3374
+1L_data15           1lep   2000   run         data15_13TeV.00276262.physics_Main.deriv.DAOD_HIGG5D2.r9264_p3083_p3372
+1L_data16           1lep   2000   run         data16_13TeV.00297730.physics_Main.deriv.DAOD_HIGG5D2.r9264_p3083_p3372
+1L_data17           1lep   2000   run         data17_13TeV.00325713.physics_Main.deriv.DAOD_HIGG5D2.f839_m1824_p3372
+
+2L_mc16a_ZHllbb     2lep   200    run         mc16_13TeV.345055.PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llbb_VpT.deriv.DAOD_HIGG2D4.e5706_e5984_s3126_r9364_r9315_p3374
+2L_mc16d_ZHllbb     2lep   200    run         mc16_13TeV.345055.PowhegPythia8EvtGen_NNPDF3_AZNLO_ZH125J_MINLO_llbb_VpT.deriv.DAOD_HIGG2D4.e5706_e5984_s3126_r10201_r10210_p3374
+2L_mc16a_ttbar      2lep   200    run         mc16_13TeV.410472.PhPy8EG_A14_ttbar_hdamp258p75_dil.deriv.DAOD_HIGG2D4.e6348_e5984_s3126_r9364_r9315_p3371
+2L_mc16d_ttbar      2lep   200    run         mc16_13TeV.410472.PhPy8EG_A14_ttbar_hdamp258p75_dil.deriv.DAOD_HIGG2D4.e6348_e5984_s3126_r10201_r10210_p3371
+2L_mc16a_HVT        2lep   200    run         mc16_13TeV.302407.MadGraphPythia8EvtGen_A14NNPDF23LO_HVT_Agv1_VzZH_llqq_m2200.deriv.DAOD_HIGG2D4.e4069_e5984_s3126_r9364_r9315_p3374
+#2L_mc16a_bbAZh     2lep   200    run         mc16_13TeV.343504.aMcAtNloPythia8EvtGen_A14NNPDF23LO_bbA300_yb2_Zhllbb.deriv.DAOD_HIGG2D4.e4741_e5984_s3126_r9364_r9315_p3374
+#2L_mc16a_ggAZh     2lep   200    run         mc16_13TeV.341736.MadGraphPythia8EvtGen_A14NNPDF23LO_ggA1000_Zh125_llbb.deriv.DAOD_HIGG2D4.e4137_e5984_s3126_r9364_r9315_p3374
+2L_data15           2lep   2000   run         data15_13TeV.00276262.physics_Main.deriv.DAOD_HIGG2D4.r9264_p3083_p3372
+2L_data16           2lep   2000   run         data16_13TeV.00297730.physics_Main.deriv.DAOD_HIGG2D4.r9264_p3083_p3372
+2L_data17           2lep   2000   run         data17_13TeV.00325713.physics_Main.deriv.DAOD_HIGG2D4.f839_m1824_p3372
+
+vgamma_mc16a_sig    vgamma 100    run-Vgamma  mc16_13TeV.364546.Sherpa_222_NNPDF30NNLO_SinglePhoton_pty_500_1000.deriv.DAOD_EXOT3.e5938_s3126_r9364_r9315_p3366
+vgamma_data15       vgamma 1000   run-Vgamma  data15_13TeV.00280423.physics_Main.deriv.DAOD_EXOT3.r9264_p3083_p3388
+vgamma_data16       vgamma 1000   run-Vgamma  data16_13TeV.00302872.physics_Main.deriv.DAOD_EXOT3.r9264_p3083_p3388
+vgamma_data17       vgamma 1000   run-Vgamma  data17_13TeV.00327103.physics_Main.deriv.DAOD_EXOT3.f838_m1824_p3388

@@ -1,0 +1,281 @@
+\documentclass{beamer}
+%\usepackage{beamerthemeshadow}
+%\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamersize{text margin left=5mm}
+\setbeamersize{text margin right=5mm}
+
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{grffile}
+\usepackage{tabularx}
+
+\usepackage{epstopdf}
+
+\pdfpageattr{/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+
+\usepackage{listings}
+\lstset{
+     language     = C++,
+     basicstyle   = \ttfamily,
+     keywordstyle = \ttfamily\color[rgb]{0.0, 0.0, 1.0},
+     stringstyle  = \ttfamily\color[rgb]{1.0, 0.0, 0.0},
+     commentstyle = \ttfamily\color[rgb]{0.0, 0.6, 0.0},
+     backgroundcolor = \color[rgb]{0.9, 0.9, 0.9},
+     frame        = single,
+     numbers      = left,
+}
+
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+\definecolor{titlecolorr}{rgb}{0.75,0.8,0.9}
+\definecolor{blockcolorr}{rgb}{0.3,0.35,0.55}
+\setbeamercolor*{frametitle}{bg=titlecolorr,fg=black}
+\setbeamercolor{author in head/foot}{bg=titlecolorr,fg=black}
+\setbeamercolor{title in head/foot}{bg=titlecolorr,fg=black}
+\setbeamercolor{title}{bg=blockcolorr,fg=white}
+\setbeamercolor{block title}{bg=blockcolorr,fg=white}
+\setbeamercolor{date in head/foot}{bg=titlecolorr,fg=black}
+%\setbeamerfont{slide title}{size=\LARGE,series=\bfseries}
+
+\begin{document}
+
+% \renewcommand{\inserttotalframenumber}{2}
+
+\newcommand{\newImage}[2]{
+  \begin{minipage}{#1\textwidth}
+  \renewcommand{\_}{_}
+  \IfFileExists{#2}
+  {\includegraphics[width=1\textwidth]{#2}}
+  {\centering N/A}
+  \renewcommand{\_}{\textunderscore}
+    \end{minipage}
+}
+
+\title{CxAOD structure and CxAODReader}
+\author[Daniel B\"uscher]{
+%Hannah Arnold, \underline{
+Daniel B\"uscher%}, Christian Weiser
+}
+\institute{Universit\"at Freiburg}\date{\today} 
+
+\frame{\titlepage}
+
+%\footnotesize
+\scriptsize
+
+\begin{frame}[fragile]
+\frametitle{Introduction}
+% \structure{Inputs}
+\begin{itemize}
+ \item Discussing the object retrieval and systematic loop in CxAODReader
+ \item Showing example code from SVN (links below), but simplified in many places
+ \item[$\Rightarrow$] The SVN code has more checks and optimizations, which should be kept
+\end{itemize}
+\begin{center}
+\end{center}
+{\tiny
+Code from:
+\vspace{-2mm}
+\begin{verbatim}
+https://svnweb.cern.ch/trac/
+atlasoff/browser/PhysicsAnalysis/HiggsPhys/Run2/Hbb/CxAODFramework/CxAODReader/
+https://svnweb.cern.ch/trac/
+atlasphys-exa/browser/Physics/Exotic/Analysis/DibosonResonance/Data2015/Code/CxAODFramework_DB/CxAODReader_DB/
+\end{verbatim}
+Basic info on the xAOD EDM:
+\vspace{-2mm}
+\begin{verbatim}
+https://twiki.cern.ch/twiki/bin/view/AtlasComputing/SoftwareTutorialxAODAnalysisInROOT
+\end{verbatim}
+Tutorial slides with more info on CxAOD structure:
+\vspace{-2mm}
+\begin{verbatim}
+https://svnweb.cern.ch/trac/atlasoff/export/HEAD/PhysicsAnalysis/HiggsPhys/Run2/Hbb/CxAODFramework/
+FrameworkSub/trunk/doc/15-02-17_tutorial/CxAODtutorial.pdf
+\end{verbatim}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{CxAOD structure}
+% \structure{Inputs}
+\begin{itemize}
+ \item Systematic variations of objects (particles) are stored as shallow copies (SCs) of Nominal
+\begin{itemize}
+\scriptsize
+ \item Only the Nominal collection contains all branches
+ \item SCs contain only those branches affected by systematics
+ \item[$\Rightarrow$] Advantage in disk size and CPU time over conventional Ntuples
+\end{itemize}
+\item Example for jets:
+\begin{itemize}
+\scriptsize
+ \item \textcolor{blue}{Four-vectors and selection flags} are stored for Nominal as well as for the variation
+ \item \textcolor{red}{``jvf0'' and ``nrElectron/MuonInJet''} are only stored for Nominal jets
+ \item Note: CxAODs provide an easy drawing of systematic effects!
+\end{itemize}
+\end{itemize}
+\begin{center}
+\newImage{0.95}{browser.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{xAOD EDM and implications}
+% \structure{Inputs}
+\begin{itemize}
+ \item At first look the structure of the CxAOD seems rather complicated
+ \item However,the xAOD EDM provides convenient way to read variations:
+\begin{itemize}
+\scriptsize
+ \item SCs of objects can be used exactly as the Nominal ones
+ \item[$\Rightarrow$] Both can be accessed trough e.g. xAOD::Jet
+ \item If one tries to read a non-exising branch of the SC the Nominal value is returned
+%  \item[$\Rightarrow$] E.g. for jvf0
+\end{itemize}
+\item This implies that additional objects have to be stored
+\begin{itemize}
+\scriptsize
+ \item If an object is stored for some variation it has to be stored for all variations \\
+ (e.g. if a jet passed selection for JES-up, it is stored for Nominal, JES-do, ...) 
+ \item[$\Rightarrow$] The CxAOD can contain objects that did not actually pass the pre-selection
+ \item The same applies to events
+\end{itemize}
+\item[$\Rightarrow$] Object and event pre-selection have to be re-applied when reading the CxAOD!
+\begin{itemize}
+\scriptsize
+\item Objects can be re-selected using flags + re-applying overlap removal
+\item For event selection the same routine can be re-applied
+\item[$\Rightarrow$] Both implemented by CxAODReader
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Initialize selection in CxAODReader}
+% \structure{Inputs}
+\begin{itemize}
+ \item AnalysisReader::initizializeSelection() determines which event selection class is used
+ \item[$\Rightarrow$] Should be the same as for producing the CxAOD
+ \item In addition, a ``fill function'' is defined: fills histograms, output trees, ...
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+EL::StatusCode AnalysisReader_DB :: initializeSelection() {
+  m_config->getif<int>("analysisType", m_analysisType);
+  if (m_analysisType==VH1LepHist) {
+    m_eventSelection = new lvqq_MainEvtSelection(m_config); 
+    m_fillFunction = std::bind(&AnalysisReader_DB::fill_VH1LepHist, this);
+  }
+  // initialize other selections, MVATree, ...
+}
+
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The event loop in CxAODReader}
+% \structure{Inputs}
+\begin{itemize}
+ \item For each event a loop on the variations is performed (different to most Run 1 codes)
+\begin{itemize}
+\scriptsize
+ \item[{\bf (a)}] ObjectReader take care of reading the xAOD containers (via TEvent::retrieve())
+ \item[{\bf (b)}] The overlap removal and event selection are applied
+ \item[{\bf (c)}] A user defined fill function is called
+\end{itemize}
+ \item Note: (b), (c) don't need to know which variation is processed, \\
+ they are just provided with objects of a given variation
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+EL::StatusCode AnalysisReader::execute () {
+  for (std::string varName : m_variations) {
+    m_electrons = m_electronReader->getObjects(varName);
+    m_jets      = m_jetReader->getObjects(varName);
+    // ... retrieve other containers ...
+    setObjectsForOR(m_electrons, ...);
+    m_overlapRemoval->removeOverlap(m_electrons, ...)
+    bool passSel = m_eventSelection->passPreSelection(m_electrons, ...);
+    passSel     &= m_eventSelection->passSelection(m_electrons, ...);
+    if (!passSel) continue;
+    m_fillFunction();
+  }
+}
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The fill function}
+% \structure{Inputs}
+\begin{itemize}
+ \item The fill function retrieves the result of the event selection
+ \item[$\Rightarrow$] The result contains the selected objects for the present variation
+ \item One could directly access m\_jets, but these are not guaranteed have passed selection!
+ \item The xAOD objects provide methods retrieving four-vectors and some other properties
+ \item Other values can be read using PROPs (defined in CommonProperties.h or anywhere else)
+ \item[$\Rightarrow$] Analysis variables can be calculated and filled into histograms, ...
+\end{itemize}
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+{\tiny
+\begin{lstlisting}
+EL::StatusCode AnalysisReader_DB::fill_VH1LepHist() {
+  DBResult selectionResult = ((lvqq_MainEvtSelection*)m_eventSelection)->result();
+  std::vector<const xAOD::Electron*> electrons = selectionResult.el;
+  std::vector<const xAOD::Jet*>      largeJets = selectionResult.largeJets;
+  std::vector<const xAOD::Jet*>      trackJets = selectionResult.trackJets;
+  // ... retrieve other containers ...
+  TLorentzVector lepVec  = electron.at(0)->p4();
+  TLorentzVector higgVec = largeJets.at(0)->p4();
+  float btagVal          = Props::MV2c20.get(trackJets.at(0));
+  // ... compute analysis variables, fill histograms, output tree ...
+}
+\end{lstlisting}
+}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Summary}
+\structure{Summary}
+\begin{itemize}
+ \item The CxAOD format provides an efficient way to store and read systematic variations
+ \item Not all stored objects/events are guaranteed to have passed pre-selection
+ \item[$\Rightarrow$] Selection has to be re-applied!
+ \item This is implemented by CxAODReader 
+\begin{itemize}
+\scriptsize
+ \item Provides an efficient systematics loop
+ \item Final analysis variables can be easily calculated using xAOD objects
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+% 
+% \begin{frame}
+% \frametitle{BACKUP}
+% \begin{center}
+%  \huge BACKUP
+% \end{center}
+% \end{frame}
+
+
+\end{document}
+
+
